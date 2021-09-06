@@ -1,25 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import SignUp from './SIgnUp/SIgnUp';
+import Login from './SignIn/Login';
+import Users from './Users/Users';
+import Error from './Error';
+import {Link, Route, Switch, BrowserRouter as Router} from 'react-router-dom';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <Router>
+            <header>
+                <Link to="/">
+                    <button>Login</button>
+                </Link>
+                <Link to="/SignUp">
+                    <button>회원가입</button>
+                </Link>
+                <Link to="/users">
+                    <button>목록</button>
+                </Link>
+            </header>
+            <hr/>
+            <main>
+                <Switch>
+                    <Route exact path="/" component={Login}/>
+                    <Route path="/SignUp" component={SignUp}/>
+                    <Route path="/users" component={Users}/>
+                    <Route component={Error} />
+                </Switch>
+            </main>
+        </Router>
+    );
 }
 
 export default App;
