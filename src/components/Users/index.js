@@ -3,7 +3,7 @@ import {Route} from "react-router-dom";
 import UserList from "./UserList";
 import UserDetail from "./UserDetail";
 
-function Users({match}) {
+function Index({match}) {
     return (
         <>
             <h1>Users</h1>
@@ -13,4 +13,4 @@ function Users({match}) {
     );
 }
 
-export default Users;
+export default Index;
