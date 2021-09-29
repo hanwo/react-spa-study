@@ -6,7 +6,6 @@ import UserDetail from "./UserDetail";
 function Index({match}) {
     return (
         <>
-            <h1>Users</h1>
             <Route exact path={match.path} component={UserList}/>
             <Route path={`${match.path}/:id`} component={UserDetail}/>
         </>

@@ -13,12 +13,22 @@ class UserService {
     getAll() {
         return request('get', API_URL + 'all')
             .then((response) => {
-                console.log(response.data);
                 return response.data;
             });
     }
 
+    editUser(email, name){
+        return request('put', API_URL, {
+            email,
+            name,
+        });
+    }
 
+    deleteUser(email){
+        return request('delete', API_URL + email, {
+            email,
+        });
+    }
 }
 
 export default new UserService();

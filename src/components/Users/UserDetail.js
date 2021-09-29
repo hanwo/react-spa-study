@@ -1,14 +1,22 @@
 import React from "react";
-import {users} from "./data.json";
 
-function UserDetail({match, history}) {
-    const user = users.find((user) => user.id === match.params.id);
+function UserDetail(data) {
+
+    const editUser = () => {
+        data.editInfo(data.user.email, data.user.name);
+    }
+
+    const deleteUser = () => {
+        data.delUser(data.user.email);
+    }
     return (
         <>
-            <h2>User Detail</h2>
-            <dt>id: {user.id} </dt>
-            <dt>name : {user.name}</dt>
-            <button onClick={() => history.goBack()}>Back</button>
+            <dt>Role: {data.user.authority} </dt>
+            <dt>Email : {data.user.email}</dt>
+            <dt>Name : {data.user.name}</dt>
+            <button onClick={editUser}>수정</button> <span></span>
+            <button onClick={deleteUser}>삭제</button>
+            <br></br>
         </>
     );
 }

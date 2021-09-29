@@ -24,11 +24,11 @@ const SignUp = (props) =>{
     const onSubmitHandler = (e) => {
         e.preventDefault();
         dispatch(register(userName, email, password)).then(() => {
-            props.history.push('/singIn');
+            props.history.push('/signIn');
             window.location.reload();
         }).catch((e) => {
             console.log(e);
-            alert("로그인 에러")
+            alert("회원가입 에러")
         });
     };
     return (

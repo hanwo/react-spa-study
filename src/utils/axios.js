@@ -14,7 +14,6 @@ export const request = (method, url, data) => {
         },
         withCredentials: false,
         data,
-    })
-        .then((res) => res.data)
+    }).then((res) => res.data)
         .catch((err) => console.log(err));
 };
