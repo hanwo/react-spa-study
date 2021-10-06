@@ -45,8 +45,8 @@ const App = () => {
         return () => {
             EventBus.remove("logout");
         };
-    }, [currentUser, logOut]);
 
+    }, [currentUser, logOut]);
     return (
         <Router history={history}>
             <div>

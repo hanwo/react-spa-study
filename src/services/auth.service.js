@@ -4,6 +4,17 @@ import jwt_decode from "jwt-decode";
 const API_URL = "auth/";
 
 class AuthService {
+    check(token) {
+        return request('post', API_URL + 'check', {token})
+            .then((response) => {
+                if(response.data !== 'AuthException') {
+                    return false;
+                } else {
+                    return true;
+                }
+            })
+    }
+
     login(email, password) {
         return request('post', API_URL + 'login', {email, password})
             .then((response) => {

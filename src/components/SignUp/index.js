@@ -1,13 +1,11 @@
 import React, {useState} from "react";
-import {useDispatch} from 'react-redux';
-import {register} from '../../actions/auth';
+import AuthService from "../../services/auth.service";
 
 const SignUp = (props) =>{
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [userName, setName] = useState("");
-    const dispatch = useDispatch();
 
     const onEmailHandler = (e) => {
         setEmail(e.currentTarget.value);
@@ -23,13 +21,13 @@ const SignUp = (props) =>{
 
     const onSubmitHandler = (e) => {
         e.preventDefault();
-        dispatch(register(userName, email, password)).then(() => {
+        AuthService.register(userName, email, password).then(() => {
             props.history.push('/signIn');
             window.location.reload();
-        }).catch((e) => {
+        }).catch(((e) => {
             console.log(e);
             alert("회원가입 에러")
-        });
+        }))
     };
     return (
         <div

@@ -1,57 +1,18 @@
-import React, {useEffect, useState} from 'react';
-import UserDetail from "./UserDetail";
-import UserService from '../../services/user.service';
-import {deleteUser, editUser} from "../../actions/user";
-import {useDispatch} from "react-redux";
+import React from "react";
 
-
-const UserList = (props) =>{
-    const [users, setUsers] = useState(null);
-    const dispatch = useDispatch();
-
-    useEffect(() => {
-        const fetchUsers = async () => {
-            setUsers(null);
-            const response = await UserService.getAll();
-            setUsers(response);
-        };
-        fetchUsers();
-    }, []);
-
-    function editInfo(email, name) {
-        dispatch(editUser(name, email)).then((response) => {
-            console.log(response);
-            return response;
-        }).catch((e) => {
-            console.log(e);
-            alert("회원 수정 에러")
-        });
-    }
-
-    function delUser(email) {
-        dispatch(deleteUser(email)).then((response) => {
-            if(response.status === 200) {
-                console.log(response);
-            }
-            return response;
-        }).catch((e) => {
-            console.log(e);
-            alert("회원 삭제 에러")
-        });
-    }
-
-    if (!users) return null;
+function UserList(data) {
+    // const userDetail = (email) => {
+    //
+    // }
 
     return (
         <>
-            <h2>User List</h2>
-            <ul>
-                {users.content.map(user => (
-                    <UserDetail user={user}
-                                editInfo={editInfo}
-                                delUser={delUser}/>
-                ))}
-            </ul>
+            {/*<dt>Email : {data.user.email}</dt>*/}
+            {/*<dt>Name : {data.user.name}</dt>*/}
+            {/*<button onClick={userDetail(data.user.email)}>개인정보</button>*/}
+            {/*<button onClick={editUser}>수정</button> <span></span>*/}
+            {/*<button onClick={deleteUser}>삭제</button>*/}
+            {/*<br></br>*/}
         </>
     );
 }

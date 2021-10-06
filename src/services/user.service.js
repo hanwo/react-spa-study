@@ -3,15 +3,15 @@ import {request} from '../utils/axios';
 const API_URL = 'member/';
 
 class UserService {
-    get() {
-        return request('get', API_URL)
+    get(email) {
+        return request('get', API_URL, email)
             .then((response) => {
                 return response.data;
             });
     }
 
     getAll() {
-        return request('get', API_URL + 'all')
+        return request('get', API_URL + 'all' + '?page=1&size=10')
             .then((response) => {
                 return response.data;
             });
